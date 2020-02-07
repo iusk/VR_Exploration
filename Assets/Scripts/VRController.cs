@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
+using Valve.VR.InteractionSystem;
 
 public class VRController : MonoBehaviour
 {
@@ -27,9 +28,9 @@ public class VRController : MonoBehaviour
     }
 
     private void Update() {
-        HandleHeight();  
-        HandleHead();
-        CalculateMovement();
+        // HandleHeight();  
+        // HandleHead();
+        // CalculateMovement();
     }
 
     private void HandleHead() {
