@@ -282,6 +282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 400944303}
   - component: {fileID: 400944302}
+  - component: {fileID: 400944304}
   m_Layer: 0
   m_Name: VRController
   m_TagString: Untagged
@@ -322,6 +323,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &400944304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400944301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0854c47cfa35e7b4ebd0fe045f93a692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Sensitivity: 0.1
+  m_MaxSpeed: 1
+  m_MovePress:
+    actionPath: /actions/default/in/Teleport
+    needsReinit: 0
+  m_MoveValue:
+    actionPath: /actions/default/in/TouchpadPosition
+    needsReinit: 0
 --- !u!1 &408630935
 GameObject:
   m_ObjectHideFlags: 0
