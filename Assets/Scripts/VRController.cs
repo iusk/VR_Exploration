@@ -45,8 +45,7 @@ public class VRController : MonoBehaviour
 
     private void CalculateMovement() {
         // figure out movement orientation
-        float cameraYRotation = transform.GetChild(0).gameObject.transform.eulerAngles.y;
-        Vector3 orientationEuler = new Vector3(0, cameraYRotation, 0);
+        Vector3 orientationEuler = new Vector3(0, transform.eulerAngles.y, 0);
         Quaternion orientation = Quaternion.Euler(orientationEuler);
         Vector3 movement = Vector3.zero;
 
