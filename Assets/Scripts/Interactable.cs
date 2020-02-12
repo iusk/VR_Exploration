@@ -3,15 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Interactable : MonoBehaviour
 {
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-
-    }
+    [HideInInspector]
+    public Hand m_ActiveHand = null;
 }

@@ -53,16 +53,60 @@ public class Hand : MonoBehaviour
 
     public void Pickup()
     {
+        // Get nearest
+        m_CurrentInteractable = GetNearestInteractable();
 
+        // Null check
+        if (!m_CurrentInteractable)
+            return;
+
+        // Already held, check
+        if (m_CurrentInteractable.m_ActiveHand)
+            m_CurrentInteractable.m_ActiveHand.Drop();
+
+        // Position
+        m_CurrentInteractable.transform.position = transform.position;
+
+        // Attach
+        Rigidbody targetBody = m_CurrentInteractable.GetComponent<Rigidbody>();
+
+        // Set active hand
+        m_CurrentInteractable.m_ActiveHand = this;
     }
 
     public void Drop()
     {
+        // Null check
+        if (!m_CurrentInteractable)
+            return;
 
+        // Apply velocity
+        Rigidbody targetBody = m_CurrentInteractable.GetComponent<Rigidbody>();
+        targetBody.velocity = m_Pose.GetVelocity();
+        targetBody.angularVelocity = m_Pose.GetAngularVelocity();
+
+        // Detach
+        m_Joint.connectedBody = null;
+
+        // Clear
+        m_CurrentInteractable.m_ActiveHand = null;
+        m_CurrentInteractable = null;
     }
 
     private Interactable GetNearestInteractable()
     {
-        return null;
+        Interactable nearest = null;
+        float minDistance = float.MaxValue;
+        float distance = 0.0f;
+        foreach (Interactable interactable in m_ContractInteractables)
+        {
+            distance = (interactable.transform.position - transform.position).sqrMagnitude;
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                nearest = interactable;
+            }
+        }
+        return nearest;
     }
 }
